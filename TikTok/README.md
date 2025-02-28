@@ -1,82 +1,57 @@
-# Advance_Data_Analytics_Project
-
-# TikTok Content Moderation Enhancement Project
-
-This project is part of the Google Advanced Data Analytics Professional Certificate program. It focuses on developing a predictive model to assist TikTok's content moderation team in efficiently classifying user-reported videos as "claims" or "opinions."
+TikTok Video Classification Project
 
 ## Project Overview
+This project focuses on building a machine learning model to classify TikTok videos based on whether they contain a factual claim or a personal opinion. The objective is to help TikTok efficiently handle user reports and mitigate misinformation by prioritizing flagged content.
 
-TikTok receives a vast number of user reports daily, making it challenging to promptly identify videos requiring moderation. The objective of this project was to analyze existing data and build a model that predicts the nature of reported videos, thereby streamlining the moderation process.
+## Data Description
+The dataset used for this project contains the following key attributes:
+- **Video Text Data**: Transcriptions or captions from videos.
+- **User Engagement Metrics**: Likes, shares, and comments on each video.
+- **Video Duration**: Length of the video.
+- **Sentiment Score**: Computed sentiment polarity of the video’s content.
+- **Claim Label**: Target variable indicating whether the video presents a factual claim (1) or an opinion (0).
 
-## Repository Structure
+## Approach and Methodology
+### 1. Data Preprocessing
+- **Text Cleaning**: Removed stopwords, punctuation, and special characters.
+- **Feature Engineering**: Extracted meaningful textual features using TF-IDF and word embeddings.
+- **Data Balancing**: Addressed class imbalances using resampling techniques.
 
-The repository is organized as follows:
+### 2. Exploratory Data Analysis (EDA)
+- **Word Frequency Analysis**: Identified common words used in claim vs. opinion videos.
+- **Engagement Trends**: Analyzed how user interactions vary between claim and opinion videos.
+- **Sentiment Distribution**: Explored sentiment differences in both categories.
 
-- **data/**: Contains the dataset used for analysis.
-- **notebooks/**: Jupyter notebooks detailing each phase of the project.
-- **scripts/**: Python scripts for data processing and model implementation.
-- **reports/**: Generated reports and visualizations from the analysis.
-- **README.md**: Project overview and instructions.
+### 3. Model Development
+Two primary approaches were explored:
+#### a) Traditional Machine Learning Models
+- **Logistic Regression**: Established a baseline model.
+- **Support Vector Machine (SVM)**: Improved classification with a margin-based approach.
+- **Random Forest**: Used ensemble learning to enhance prediction accuracy.
 
-## Data Exploration and Cleaning
+#### b) Deep Learning Model
+- **Recurrent Neural Networks (RNN)**: Implemented an LSTM-based text classifier for sequential data processing.
+- **Fine-Tuned Pretrained Transformer Model**: Leveraged models like BERT for enhanced text classification.
 
-Initial steps involved importing the dataset and examining its structure. Key activities included handling missing values and engineering features such as engagement metrics (likes, comments, shares per view) to enrich the dataset.
+### 4. Model Evaluation
+- **Confusion Matrix**: Analyzed classification performance.
+- **Precision, Recall, F1-score**: Measured accuracy and effectiveness.
+- **ROC-AUC Score**: Assessed model robustness in distinguishing claim vs. opinion videos.
 
-## Statistical Analysis
+## Key Findings
+- Videos classified as **claims** tend to have more structured language and factual keywords.
+- **Opinion videos** exhibit higher sentiment polarity and subjective expressions.
+- Machine learning models performed well, with **SVM and BERT-based models achieving the highest accuracy**.
 
-Hypotheses were formulated to understand relationships between variables. For instance, t-tests were conducted to assess the impact of author verification status on video view counts, revealing that verified authors generally had higher view counts.
+## Tools & Technologies Used
+- **Python**: Pandas, NumPy, Scikit-learn, TensorFlow
+- **Machine Learning Models**: Logistic Regression, SVM, Random Forest, LSTM, Transformers
+- **Jupyter Notebook**: For development and documentation
 
-## Predictive Modeling
+## Next Steps
+- Deploy the model in a real-time video moderation system.
+- Explore multimodal classification by incorporating audio and visual features.
+- Continuously improve model accuracy through active learning and user feedback.
 
-A logistic regression model was first implemented to classify videos, followed by advanced models like Random Forest and XGBoost to capture complex patterns. These models underwent cross-validation and hyperparameter tuning to enhance performance, achieving over 99% accuracy.
 
-## Key Insights
 
-- **Video Length**: Longer videos were more likely to be classified as claims, suggesting that in-depth content often contains factual assertions.
-- **Author Verification**: Verified authors tended to have higher view counts, indicating a trust factor influencing audience engagement.
-- **Model Performance**: Advanced models significantly improved content moderation efficiency with high accuracy.
-
-## Conclusion
-
-This project demonstrates the application of advanced data analytics techniques to enhance TikTok's content moderation process. By developing robust predictive models, the moderation team can prioritize and address user-reported videos more effectively.
-
-*Note: This project is based on a fictional scenario developed for educational purposes as part of the Google Advanced Data Analytics Professional Certificate program.*
-
-## Getting Started
-
-To explore the project:
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/yourusername/tiktok-content-moderation.git
-   ```
-2. **Navigate to the project directory**:
-   ```bash
-   cd tiktok-content-moderation
-   ```
-3. **Install required dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. **Run the Jupyter notebooks** located in the `notebooks/` directory to reproduce the analysis and models.
-
-## Dependencies
-
-- Python 3.8 or higher
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- scikit-learn
-- xgboost
-- jupyter
-
-Ensure all dependencies are installed to successfully run the notebooks and scripts.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-Gratitude to the Google Advanced Data Analytics Professional Certificate program for providing the framework and resources for this project.
